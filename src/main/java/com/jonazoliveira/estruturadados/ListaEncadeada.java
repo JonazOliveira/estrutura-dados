@@ -7,7 +7,12 @@ public class ListaEncadeada<E> {
 
     public void adiciona(E elemento) {
         No<E> celula = new No<>(elemento);
-        this.inicio = celula;
+        if(this.tamanho == 0) {
+            this.inicio = celula;
+        } else {
+            this.ultimo.setProximo(celula);
+        }
+        this.ultimo = celula;
         this.tamanho++;
     }
 
@@ -17,9 +22,19 @@ public class ListaEncadeada<E> {
 
     @Override
     public String toString() {
-        return "ListaEncadeada {" +
-                "inicio=" + inicio +
-                '}';
+        if(this.tamanho == 0) {
+            return "[]";
+        }
+        StringBuilder builder = new StringBuilder("[");
+        No<E> atual = this.inicio;
+
+        for(int i = 0; i < this.tamanho -1 ; i++) {
+            builder.append(atual.getElemento()).append(", ");
+            atual = atual.getProximo();
+        }
+        builder.append(atual.getElemento()).append("]");
+
+        return builder.toString();
     }
 
 }
