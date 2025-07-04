@@ -2,6 +2,7 @@ package com.jonazoliveira.estruturadados;
 
 public class ListaEncadeada<E> {
     private No<E> inicio;
+    private No<E> ultimo;
     private int tamanho;
 
     public void adiciona(E elemento) {
